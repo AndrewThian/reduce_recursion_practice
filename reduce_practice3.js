@@ -14,24 +14,3 @@ let obj = {
   }
 }
 */
-
-let output = fs.readFileSync('data.txt', 'utf-8')
-  .trim()
-  .split('\n')
-  .map(function (line) {
-    return line.split('  ')
-  })
-  .reduce(function (customers, line) {
-    // console.log(customers)
-    // setting key in customer object which comes from {} in reduce
-    // this line is creating a new array if there isn't one!
-    customers[line[0]] = customers[line[0]] || []
-    customers[line[0]].push({
-      name: line[1],
-      price: line[2],
-      quantity: line[3]
-    })
-    return customers
-  }, {})
-
-console.log('output', JSON.stringify(output, null, 2))

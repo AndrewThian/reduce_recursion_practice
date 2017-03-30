@@ -9,24 +9,3 @@ let categories = [
   { id: 'persian', 'parent': 'cats' },
   { id: 'siamese', 'parent': 'cats' }
 ]
-
-let makeTree = (categories, parent) => {
-  let node = {}
-  categories
-    .filter((c, i) => {
-      console.log('current index', i)
-      console.log(c, c.parent, parent)
-      return c.parent === parent
-    })
-    .forEach(c => {
-      node[c.id] = makeTree(categories, c.id)
-    })
-  return node
-}
-
-console.log(
-  JSON.stringify(
-    makeTree(categories, null)
-    , null, 2
-  )
-)
